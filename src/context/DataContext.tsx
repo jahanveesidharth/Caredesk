@@ -139,14 +139,14 @@ const INITIAL_PATIENTS: Patient[] = [
   {
     id: 'p-1',
     tenant_id: 't1-tenant-id-1111',
-    name: 'John Doe',
+    name: 'Aarav Sharma',
     gender: 'Male',
     dob: '1981-06-15',
     age: 45,
-    phone: '+1 (555) 304-2092',
-    email: 'johndoe@email.com',
+    phone: '+91 98765 00001',
+    email: 'aarav.sharma@email.com',
     address: '404 Oak Avenue, Chicago, IL',
-    emergency_contact: 'Jane Doe (+1 555-304-2093)',
+    emergency_contact: 'Pooja Sharma (+91 98765 00002)',
     blood_group: 'O-positive',
     allergies: 'Penicillin',
     history: 'Hypertension diagnosed in 2021.'
@@ -154,14 +154,14 @@ const INITIAL_PATIENTS: Patient[] = [
   {
     id: 'p-2',
     tenant_id: 't1-tenant-id-1111',
-    name: 'Alice Smith',
+    name: 'Diya Joshi',
     gender: 'Female',
     dob: '1997-11-22',
     age: 28,
-    phone: '+1 (555) 890-4411',
-    email: 'alice.smith@email.com',
+    phone: '+91 98765 00003',
+    email: 'diya.joshi@email.com',
     address: '12 Maple Dr, Evanston, IL',
-    emergency_contact: 'Bob Smith (+1 555-890-4412)',
+    emergency_contact: 'Vijay Joshi (+91 98765 00004)',
     blood_group: 'A-positive',
     allergies: 'Peanuts',
     history: 'Asthma in childhood.'
@@ -169,14 +169,14 @@ const INITIAL_PATIENTS: Patient[] = [
   {
     id: 'p-3',
     tenant_id: 't2-tenant-id-2222',
-    name: 'Michael Brown',
+    name: 'Kabir Patel',
     gender: 'Male',
     dob: '1992-03-10',
     age: 34,
-    phone: '+1 (555) 902-8877',
-    email: 'michael.b@email.com',
+    phone: '+91 98765 00005',
+    email: 'kabir.p@email.com',
     address: '89 Main St, Boston, MA',
-    emergency_contact: 'Helen Brown (+1 555-902-8878)',
+    emergency_contact: 'Kirti Patel (+91 98765 00006)',
     blood_group: 'B-positive',
     allergies: 'None',
     history: 'Routine dental scaling yearly.'
@@ -184,14 +184,14 @@ const INITIAL_PATIENTS: Patient[] = [
   {
     id: 'p-4',
     tenant_id: 't1-tenant-id-1111',
-    name: 'Robert Johnson',
+    name: 'Rahul Verma',
     gender: 'Male',
     dob: '1964-08-19',
     age: 62,
-    phone: '+1 (555) 432-8765',
-    email: 'rjohnson@email.com',
+    phone: '+91 98765 00007',
+    email: 'rahul.verma@email.com',
     address: '156 Pine St, Chicago, IL',
-    emergency_contact: 'Linda Johnson (+1 555-432-8760)',
+    emergency_contact: 'Lata Verma (+91 98765 00008)',
     blood_group: 'B-negative',
     allergies: 'Sulfa Drugs',
     history: 'Type II Diabetes, Chronic Kidney Disease Stage II.'
@@ -199,14 +199,14 @@ const INITIAL_PATIENTS: Patient[] = [
   {
     id: 'p-5',
     tenant_id: 't1-tenant-id-1111',
-    name: 'Samantha Williams',
+    name: 'Meera Iyer',
     gender: 'Female',
     dob: '1990-12-04',
     age: 35,
-    phone: '+1 (555) 678-1234',
-    email: 'samantha.w@email.com',
+    phone: '+91 98765 00009',
+    email: 'meera.i@email.com',
     address: '789 Elm St, Naperville, IL',
-    emergency_contact: 'Marc Williams (+1 555-678-5678)',
+    emergency_contact: 'Manoj Iyer (+91 98765 00010)',
     blood_group: 'O-negative',
     allergies: 'Shellfish',
     history: 'Migraine headaches since adolescence.'
@@ -214,14 +214,14 @@ const INITIAL_PATIENTS: Patient[] = [
   {
     id: 'p-6',
     tenant_id: 't2-tenant-id-2222',
-    name: 'Emily Davis',
+    name: 'Ananya Nair',
     gender: 'Female',
     dob: '2001-05-14',
     age: 25,
-    phone: '+1 (555) 789-9876',
-    email: 'emily.davis@email.com',
+    phone: '+91 98765 00011',
+    email: 'ananya.n@email.com',
     address: '100 Boylston St, Boston, MA',
-    emergency_contact: 'Mark Davis (+1 555-789-9800)',
+    emergency_contact: 'Madhav Nair (+91 98765 00012)',
     blood_group: 'AB-positive',
     allergies: 'Aspirin',
     history: 'Orthodontic braces (completed).'
@@ -233,8 +233,8 @@ const INITIAL_APPOINTMENTS: Appointment[] = [
     id: 'a-1',
     tenant_id: 't1-tenant-id-1111',
     patient_id: 'p-1',
-    patient_name: 'John Doe',
-    doctor_name: 'Dr. Alexander House',
+    patient_name: 'Aarav Sharma',
+    doctor_name: 'Dr. Aarav Mehta',
     date: new Date().toISOString().split('T')[0],
     time: '09:30 AM',
     token: 'T-101',
@@ -244,8 +244,8 @@ const INITIAL_APPOINTMENTS: Appointment[] = [
     id: 'a-2',
     tenant_id: 't1-tenant-id-1111',
     patient_id: 'p-2',
-    patient_name: 'Alice Smith',
-    doctor_name: 'Dr. Alexander House',
+    patient_name: 'Diya Joshi',
+    doctor_name: 'Dr. Aarav Mehta',
     date: new Date().toISOString().split('T')[0],
     time: '10:45 AM',
     token: 'T-102',
@@ -255,8 +255,8 @@ const INITIAL_APPOINTMENTS: Appointment[] = [
     id: 'a-3',
     tenant_id: 't2-tenant-id-2222',
     patient_id: 'p-3',
-    patient_name: 'Michael Brown',
-    doctor_name: 'Dr. Apex Dentist',
+    patient_name: 'Kabir Patel',
+    doctor_name: 'Dr. Aditya Sen',
     date: new Date().toISOString().split('T')[0],
     time: '02:00 PM',
     token: 'T-201',
@@ -266,8 +266,8 @@ const INITIAL_APPOINTMENTS: Appointment[] = [
     id: 'a-4',
     tenant_id: 't1-tenant-id-1111',
     patient_id: 'p-4',
-    patient_name: 'Robert Johnson',
-    doctor_name: 'Dr. Alexander House',
+    patient_name: 'Rahul Verma',
+    doctor_name: 'Dr. Aarav Mehta',
     date: new Date().toISOString().split('T')[0],
     time: '11:30 AM',
     token: 'T-103',
@@ -361,7 +361,7 @@ const INITIAL_INVOICES: Invoice[] = [
     id: 'inv-1',
     tenant_id: 't1-tenant-id-1111',
     patient_id: 'p-1',
-    patient_name: 'John Doe',
+    patient_name: 'Aarav Sharma',
     items: [
       { label: 'Outpatient Consultation Fee', price: 500 }
     ],
@@ -373,7 +373,7 @@ const INITIAL_INVOICES: Invoice[] = [
     id: 'inv-2',
     tenant_id: 't1-tenant-id-1111',
     patient_id: 'p-4',
-    patient_name: 'Robert Johnson',
+    patient_name: 'Rahul Verma',
     items: [
       { label: 'Outpatient Consultation Fee', price: 500 },
       { label: 'Laboratory Order: HbA1c Test', price: 400 }
@@ -385,18 +385,18 @@ const INITIAL_INVOICES: Invoice[] = [
 ];
 
 const INITIAL_EMPLOYEES: Employee[] = [
-  { id: 'emp-1', tenant_id: 't1-tenant-id-1111', name: 'Dr. Alexander House', role: 'doctor', department: 'Cardiology', salary: 150000, leave_balance: 18, attendance_rate: 98 },
-  { id: 'emp-2', tenant_id: 't1-tenant-id-1111', name: 'Emily Blunt', role: 'nurse', department: 'Emergency Room', salary: 65000, leave_balance: 12, attendance_rate: 96 },
-  { id: 'emp-3', tenant_id: 't1-tenant-id-1111', name: 'Chloe Bennett', role: 'receptionist', department: 'Front Desk', salary: 38000, leave_balance: 14, attendance_rate: 99 },
-  { id: 'emp-4', tenant_id: 't1-tenant-id-1111', name: 'David Miller', role: 'cashier', department: 'Finance & Billing', salary: 34000, leave_balance: 15, attendance_rate: 97 },
-  { id: 'emp-5', tenant_id: 't1-tenant-id-1111', name: 'Linda Green', role: 'pharmacist', department: 'Pharmacy', salary: 55000, leave_balance: 11, attendance_rate: 95 }
+  { id: 'emp-1', tenant_id: 't1-tenant-id-1111', name: 'Dr. Aarav Mehta', role: 'doctor', department: 'Cardiology', salary: 150000, leave_balance: 18, attendance_rate: 98 },
+  { id: 'emp-2', tenant_id: 't1-tenant-id-1111', name: 'Ananya Iyer', role: 'nurse', department: 'Emergency Room', salary: 65000, leave_balance: 12, attendance_rate: 96 },
+  { id: 'emp-3', tenant_id: 't1-tenant-id-1111', name: 'Kiran Patel', role: 'receptionist', department: 'Front Desk', salary: 38000, leave_balance: 14, attendance_rate: 99 },
+  { id: 'emp-4', tenant_id: 't1-tenant-id-1111', name: 'Devendra Mishra', role: 'cashier', department: 'Finance & Billing', salary: 34000, leave_balance: 15, attendance_rate: 97 },
+  { id: 'emp-5', tenant_id: 't1-tenant-id-1111', name: 'Lakshmi Nair', role: 'pharmacist', department: 'Pharmacy', salary: 55000, leave_balance: 11, attendance_rate: 95 }
 ];
 
 const INITIAL_SHIFTS: Shift[] = [
-  { id: 's-1', tenant_id: 't1-tenant-id-1111', employee_name: 'Emily Blunt', role: 'nurse', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' },
-  { id: 's-2', tenant_id: 't1-tenant-id-1111', employee_name: 'Dr. Alexander House', role: 'doctor', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' },
-  { id: 's-3', tenant_id: 't1-tenant-id-1111', employee_name: 'Chloe Bennett', role: 'receptionist', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' },
-  { id: 's-4', tenant_id: 't1-tenant-id-1111', employee_name: 'David Miller', role: 'cashier', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' }
+  { id: 's-1', tenant_id: 't1-tenant-id-1111', employee_name: 'Ananya Iyer', role: 'nurse', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' },
+  { id: 's-2', tenant_id: 't1-tenant-id-1111', employee_name: 'Dr. Aarav Mehta', role: 'doctor', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' },
+  { id: 's-3', tenant_id: 't1-tenant-id-1111', employee_name: 'Kiran Patel', role: 'receptionist', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' },
+  { id: 's-4', tenant_id: 't1-tenant-id-1111', employee_name: 'Devendra Mishra', role: 'cashier', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' }
 ];
 
 const INITIAL_ENCOUNTERS: EMR_Encounter[] = [
@@ -404,9 +404,9 @@ const INITIAL_ENCOUNTERS: EMR_Encounter[] = [
     id: 'enc-1',
     tenant_id: 't1-tenant-id-1111',
     patient_id: 'p-1',
-    patient_name: 'John Doe',
+    patient_name: 'Aarav Sharma',
     date: '2026-07-10',
-    doctor_name: 'Dr. Alexander House',
+    doctor_name: 'Dr. Aarav Mehta',
     chief_complaint: 'Mild chest pain and shortness of breath during exertion.',
     vitals: { blood_pressure: '142/90', pulse: '84', temp: '98.6°F' },
     soap_notes: {
@@ -420,7 +420,7 @@ const INITIAL_ENCOUNTERS: EMR_Encounter[] = [
       { medicine_name: 'Amoxicillin 500mg', dosage: '1 tablet', frequency: 'Three times daily', duration: '7 days', dispensed: true, price: 250 }
     ],
     lab_orders: [
-      { test_name: 'Lipid Panel Profile', result: 'Cholesterol: 240 mg/dL (High)', status: 'completed', technician: 'Sarah Jenkins', approved: true, price: 450 }
+      { test_name: 'Lipid Panel Profile', result: 'Cholesterol: 240 mg/dL (High)', status: 'completed', technician: 'Sanjay Verma', approved: true, price: 450 }
     ],
     radiology_orders: [
       { test_name: 'Chest X-Ray AP/PA', result: 'Cardiac silhouette within normal limits. Lung fields clear.', status: 'completed', technician: 'Radiology Team', approved: true, price: 850 }
@@ -509,6 +509,20 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [shifts, setShifts] = useState<Shift[]>(workspace?.shifts ?? INITIAL_SHIFTS);
   const [notifications, setNotifications] = useState<LiveNotification[]>([]);
 
+  // Notification actions
+  const addNotification = (message: string, type: 'success' | 'warning' | 'error' | 'info' = 'info') => {
+    const id = `noti-${Date.now()}`;
+    const newNoti: LiveNotification = {
+      id,
+      message,
+      type,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      read: false
+    };
+    setNotifications(prev => [newNoti, ...prev].slice(0, 30));
+    toast(message, type);
+  };
+
   // Sync state if mock
   useEffect(() => {
     const snapshot: WorkspaceSnapshot = { patients, appointments, encounters, invoices, inventory, employees, shifts };
@@ -528,6 +542,56 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (freshWorkspace.shifts.length > 0) setShifts(freshWorkspace.shifts);
     }
   }, [tenant]);
+
+  // Listen for storage changes in other tabs (crucial for real-time synchronization between Patient and Clinician/Admin portals in mock mode)
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue);
+          
+          // 1. Check if a new doctor or employee was added in another tab
+          if (parsed.employees && parsed.employees.length > employees.length) {
+            const added = parsed.employees.filter((emp: any) => !employees.some(e => e.id === emp.id));
+            added.forEach((emp: any) => {
+              if (emp.role === 'doctor') {
+                addNotification(`Notification: Dr. ${emp.name} added to the Cardiology roster. Available for appointments!`, 'success');
+              } else {
+                addNotification(`HR Notification: New staff ${emp.name} registered.`, 'info');
+              }
+            });
+            setEmployees(parsed.employees);
+          } else if (parsed.employees) {
+            setEmployees(parsed.employees);
+          }
+          
+          // 2. Check if a new appointment was booked in another tab (e.g. by a patient)
+          if (parsed.appointments && parsed.appointments.length > appointments.length) {
+            const added = parsed.appointments.filter((app: any) => !appointments.some(a => a.id === app.id));
+            added.forEach((app: any) => {
+              addNotification(`Appointment Alert: Patient ${app.patient_name} booked slot with ${app.doctor_name} on ${app.date} at ${app.time}`, 'info');
+            });
+            setAppointments(parsed.appointments);
+          } else if (parsed.appointments) {
+            setAppointments(parsed.appointments);
+          }
+
+          // Sync other fields silently
+          if (parsed.patients) setPatients(parsed.patients);
+          if (parsed.encounters) setEncounters(parsed.encounters);
+          if (parsed.invoices) setInvoices(parsed.invoices);
+          if (parsed.inventory) setInventory(parsed.inventory);
+          if (parsed.shifts) setShifts(parsed.shifts);
+          
+        } catch (err) {
+          console.error("Storage sync failed:", err);
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, [patients, appointments, encounters, invoices, inventory, employees, shifts, addNotification]);
 
   // Supabase Real-Time Subscriptions
   useEffect(() => {
@@ -588,19 +652,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, [activeTenantId, isMock]);
 
-  // Notification actions
-  const addNotification = (message: string, type: 'success' | 'warning' | 'error' | 'info' = 'info') => {
-    const id = `noti-${Date.now()}`;
-    const newNoti: LiveNotification = {
-      id,
-      message,
-      type,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-      read: false
-    };
-    setNotifications(prev => [newNoti, ...prev].slice(0, 30));
-    toast(message, type);
-  };
+
 
   const markNotificationsAsRead = () => {
     setNotifications(prev => prev.map(n => ({ ...n, read: true })));
@@ -616,8 +668,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       switch (randomEvent) {
         case 'patient_arrival': {
-          const firsts = ['Lucas', 'Emma', 'Ethan', 'Isabella', 'Mason', 'Sophia', 'Oliver', 'Charlotte'];
-          const lasts = ['Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson'];
+          const firsts = ['Aarav', 'Ananya', 'Vivaan', 'Diya', 'Kabir', 'Ira', 'Rohan', 'Meera'];
+          const lasts = ['Sharma', 'Patel', 'Verma', 'Mehta', 'Iyer', 'Joshi', 'Nair', 'Singh'];
           const randomFirst = firsts[Math.floor(Math.random() * firsts.length)];
           const randomLast = lasts[Math.floor(Math.random() * lasts.length)];
           const patientName = `${randomFirst} ${randomLast}`;
@@ -631,10 +683,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
             gender: Math.random() > 0.5 ? 'Male' : 'Female',
             dob: dobDate,
             age: new Date().getFullYear() - new Date(dobDate).getFullYear(),
-            phone: `+1 (555) 700-${Math.floor(Math.random() * 9000 + 1000)}`,
+            phone: `+91 98765 ${Math.floor(Math.random() * 90000 + 10000)}`,
             email: `${randomFirst.toLowerCase()}@email.com`,
             address: '100 Medical Plaza Drive',
-            emergency_contact: 'Spouse (+1 555-700-1111)',
+            emergency_contact: 'Spouse (+91 98765 11111)',
             blood_group: 'O-positive',
             allergies: 'None',
             history: 'Auto simulation check-in'
@@ -647,7 +699,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
             tenant_id: activeTenantId,
             patient_id: newPat.id,
             patient_name: newPat.name,
-            doctor_name: 'Dr. Alexander House',
+            doctor_name: 'Dr. Aarav Mehta',
             date: new Date().toISOString().split('T')[0],
             time: `${Math.floor(Math.random() * 3 + 1)}:${['00', '30'][Math.floor(Math.random() * 2)]} PM`,
             token: `T-${100 + appointments.length + 1}`,
@@ -785,7 +837,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       patient_id: patientId,
       patient_name: patientObj?.name || 'Unknown Patient',
       date: new Date().toISOString().split('T')[0],
-      doctor_name: 'Dr. Alexander House',
+      doctor_name: 'Dr. Aarav Mehta',
       chief_complaint: complaint,
       vitals,
       soap_notes: soap,

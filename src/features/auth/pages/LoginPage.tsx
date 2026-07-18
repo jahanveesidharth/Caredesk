@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth, MOCK_USERS, getMockTenants } from '../../../context/AuthContext';
 import { useToast } from '../../../components/ui/toast';
+import { supabase } from '../../../services/supabase';
 import {
   Eye,
   EyeOff,
@@ -61,7 +62,37 @@ export const LoginPage: React.FC = () => {
   const [pAddress, setPAddress] = useState('');
 
   // Tenants catalog for Patient Signup Dropdown
-  const activeTenantsList = Object.values(getMockTenants());
+  const [activeTenantsList, setActiveTenantsList] = useState<any[]>(Object.values(getMockTenants()));
+
+  useEffect(() => {
+    const fetchTenants = async () => {
+      const hasSupabase = import.meta.env.VITE_SUPABASE_URL && 
+                          import.meta.env.VITE_SUPABASE_ANON_KEY && 
+                          !import.meta.env.VITE_SUPABASE_URL.includes('placeholder');
+      
+      const localTenants = Object.values(getMockTenants());
+      if (hasSupabase) {
+        try {
+          const { data, error } = await supabase.from('tenants').select('*');
+          if (data && !error) {
+            const merged = [...localTenants];
+            data.forEach((t: any) => {
+              if (!merged.some(mt => mt.id === t.id || mt.subdomain === t.subdomain)) {
+                merged.push(t);
+              }
+            });
+            setActiveTenantsList(merged);
+            return;
+          }
+        } catch (e) {
+          console.warn('Could not fetch tenants from Supabase:', e);
+        }
+      }
+      setActiveTenantsList(localTenants);
+    };
+
+    fetchTenants();
+  }, []);
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -556,7 +587,7 @@ export const LoginPage: React.FC = () => {
                       <User className="absolute left-3.5 bottom-3 text-text-muted/65 z-10" size={16} />
                       <Input
                         label="Admin First Name"
-                        placeholder="Jane"
+                        placeholder="Amit"
                         value={hAdminFirst}
                         onChange={(e) => setHAdminFirst(e.target.value)}
                         disabled={isSubmitting}
@@ -567,7 +598,7 @@ export const LoginPage: React.FC = () => {
                       <User className="absolute left-3.5 bottom-3 text-text-muted/65 z-10" size={16} />
                       <Input
                         label="Admin Last Name"
-                        placeholder="Doe"
+                        placeholder="Sharma"
                         value={hAdminLast}
                         onChange={(e) => setHAdminLast(e.target.value)}
                         disabled={isSubmitting}
@@ -644,7 +675,7 @@ export const LoginPage: React.FC = () => {
                       <User className="absolute left-3.5 bottom-3 text-text-muted/65 z-10" size={16} />
                       <Input
                         label="First Name"
-                        placeholder="Jane"
+                        placeholder="Priya"
                         value={pFirst}
                         onChange={(e) => setPFirst(e.target.value)}
                         disabled={isSubmitting}
@@ -655,7 +686,7 @@ export const LoginPage: React.FC = () => {
                       <User className="absolute left-3.5 bottom-3 text-text-muted/65 z-10" size={16} />
                       <Input
                         label="Last Name"
-                        placeholder="Doe"
+                        placeholder="Patel"
                         value={pLast}
                         onChange={(e) => setPLast(e.target.value)}
                         disabled={isSubmitting}
@@ -703,7 +734,7 @@ export const LoginPage: React.FC = () => {
                     <Phone className="absolute left-3.5 bottom-3 text-text-muted/65 z-10" size={16} />
                     <Input
                       label="Mobile Contact"
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+91 98765 43210"
                       value={pPhone}
                       onChange={(e) => setPPhone(e.target.value)}
                       disabled={isSubmitting}

@@ -33,9 +33,9 @@ export const seedNewTenantWorkspace = (tenantId: string) => {
 
   // Seed default employees for this hospital
   const seededEmployees = [
-    { id: `emp-${Date.now()}-1`, tenant_id: tenantId, name: 'Dr. Alexander House', role: 'doctor', department: 'Cardiology', salary: 150000, leave_balance: 18, attendance_rate: 98 },
-    { id: `emp-${Date.now()}-2`, tenant_id: tenantId, name: 'Emily Blunt', role: 'nurse', department: 'Emergency Room', salary: 65000, leave_balance: 12, attendance_rate: 96 },
-    { id: `emp-${Date.now()}-3`, tenant_id: tenantId, name: 'Chloe Bennett', role: 'receptionist', department: 'Front Desk', salary: 38000, leave_balance: 14, attendance_rate: 99 }
+    { id: `emp-${Date.now()}-1`, tenant_id: tenantId, name: 'Dr. Aarav Mehta', role: 'doctor', department: 'Cardiology', salary: 150000, leave_balance: 18, attendance_rate: 98 },
+    { id: `emp-${Date.now()}-2`, tenant_id: tenantId, name: 'Ananya Iyer', role: 'nurse', department: 'Emergency Room', salary: 65000, leave_balance: 12, attendance_rate: 96 },
+    { id: `emp-${Date.now()}-3`, tenant_id: tenantId, name: 'Kiran Patel', role: 'receptionist', department: 'Front Desk', salary: 38000, leave_balance: 14, attendance_rate: 99 }
   ];
 
   // Seed default patients
@@ -43,14 +43,14 @@ export const seedNewTenantWorkspace = (tenantId: string) => {
     {
       id: `p-${Date.now()}-1`,
       tenant_id: tenantId,
-      name: 'Eleanor Vance',
+      name: 'Esha Verma',
       gender: 'Female' as const,
       dob: '1975-04-12',
       age: 51,
-      phone: '+1 (555) 762-9900',
-      email: 'eleanor@email.com',
+      phone: '+91 98765 43210',
+      email: 'esha.verma@email.com',
       address: '742 Evergreen Terrace, Chicago, IL',
-      emergency_contact: 'Thomas Vance (+1 555-762-9901)',
+      emergency_contact: 'Tarun Verma (+91 98765 43211)',
       blood_group: 'AB-positive',
       allergies: 'Sulfa Drugs',
       history: 'Diabetes Type II, controlled.'
@@ -58,14 +58,14 @@ export const seedNewTenantWorkspace = (tenantId: string) => {
     {
       id: `p-${Date.now()}-2`,
       tenant_id: tenantId,
-      name: 'James Wilson',
+      name: 'Jayesh Sharma',
       gender: 'Male' as const,
       dob: '1988-09-05',
       age: 37,
-      phone: '+1 (555) 234-5678',
-      email: 'jwilson@email.com',
+      phone: '+91 98765 54321',
+      email: 'jayesh.sharma@email.com',
       address: '221B Baker St, Chicago, IL',
-      emergency_contact: 'Mary Wilson (+1 555-234-5679)',
+      emergency_contact: 'Meera Sharma (+91 98765 54322)',
       blood_group: 'O-negative',
       allergies: 'Lactose',
       history: 'Seasonal allergies.'
@@ -79,7 +79,7 @@ export const seedNewTenantWorkspace = (tenantId: string) => {
       tenant_id: tenantId,
       patient_id: seededPatients[0].id,
       patient_name: seededPatients[0].name,
-      doctor_name: 'Dr. Alexander House',
+      doctor_name: 'Dr. Aarav Mehta',
       date: new Date().toISOString().split('T')[0],
       time: '09:30 AM',
       token: 'T-101',
@@ -90,7 +90,7 @@ export const seedNewTenantWorkspace = (tenantId: string) => {
       tenant_id: tenantId,
       patient_id: seededPatients[1].id,
       patient_name: seededPatients[1].name,
-      doctor_name: 'Dr. Alexander House',
+      doctor_name: 'Dr. Aarav Mehta',
       date: new Date().toISOString().split('T')[0],
       time: '11:00 AM',
       token: 'T-102',
@@ -107,8 +107,8 @@ export const seedNewTenantWorkspace = (tenantId: string) => {
 
   // Seed default shifts
   const seededShifts = [
-    { id: `s-${Date.now()}-1`, tenant_id: tenantId, employee_name: 'Emily Blunt', role: 'nurse', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' as const },
-    { id: `s-${Date.now()}-2`, tenant_id: tenantId, employee_name: 'Dr. Alexander House', role: 'doctor', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' as const }
+    { id: `s-${Date.now()}-1`, tenant_id: tenantId, employee_name: 'Ananya Iyer', role: 'nurse', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' as const },
+    { id: `s-${Date.now()}-2`, tenant_id: tenantId, employee_name: 'Dr. Aarav Mehta', role: 'doctor', day: 'Monday', shift_time: 'Morning (08:00 - 16:00)' as const }
   ];
 
   // Seed a default encounter
@@ -119,7 +119,7 @@ export const seedNewTenantWorkspace = (tenantId: string) => {
       patient_id: seededPatients[0].id,
       patient_name: seededPatients[0].name,
       date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0], // yesterday
-      doctor_name: 'Dr. Alexander House',
+      doctor_name: 'Dr. Aarav Mehta',
       chief_complaint: 'Routine wellness checkup.',
       vitals: { blood_pressure: '120/80', pulse: '72', temp: '98.6°F' },
       soap_notes: {
@@ -172,7 +172,7 @@ const INITIAL_MOCK_TENANTS: Record<string, Tenant> = {
     status: 'active',
     logo_url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=128&q=80',
     address: '100 Medical Plaza, Chicago, IL',
-    contact_number: '+1 (555) 123-4567',
+    contact_number: '+91 22 2659 1234',
     billing_email: 'billing@stmary.org',
     created_at: new Date().toISOString(),
   },
@@ -183,7 +183,7 @@ const INITIAL_MOCK_TENANTS: Record<string, Tenant> = {
     status: 'active',
     logo_url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=128&q=80',
     address: '404 Tooth Way, Boston, MA',
-    contact_number: '+1 (555) 987-6543',
+    contact_number: '+91 80 2345 6789',
     billing_email: 'finance@apexdental.com',
     created_at: new Date().toISOString(),
   }
@@ -196,8 +196,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u1',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Sarah',
-      last_name: 'Jenkins',
+      first_name: 'Priya',
+      last_name: 'Sharma',
       role: 'hospital_admin' as const,
       department: 'Administration',
       is_active: true,
@@ -211,8 +211,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u2',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Alexander',
-      last_name: 'House',
+      first_name: 'Aarav',
+      last_name: 'Mehta',
       role: 'doctor' as const,
       department: 'Cardiology',
       is_active: true,
@@ -226,8 +226,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u3',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Emily',
-      last_name: 'Blunt',
+      first_name: 'Ananya',
+      last_name: 'Iyer',
       role: 'nurse' as const,
       department: 'Emergency Room',
       is_active: true,
@@ -241,8 +241,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u4',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Chloe',
-      last_name: 'Bennett',
+      first_name: 'Kiran',
+      last_name: 'Patel',
       role: 'receptionist' as const,
       department: 'Front Desk',
       is_active: true,
@@ -256,8 +256,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u-cashier',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'David',
-      last_name: 'Miller',
+      first_name: 'Devendra',
+      last_name: 'Mishra',
       role: 'cashier' as const,
       department: 'Finance & Billing',
       is_active: true,
@@ -271,8 +271,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u-pharmacist',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Linda',
-      last_name: 'Green',
+      first_name: 'Lakshmi',
+      last_name: 'Nair',
       role: 'pharmacist' as const,
       department: 'Pharmacy',
       is_active: true,
@@ -286,8 +286,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u-labtech',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Steven',
-      last_name: 'Curry',
+      first_name: 'Sanjay',
+      last_name: 'Verma',
       role: 'lab_technician' as const,
       department: 'Laboratory',
       is_active: true,
@@ -301,8 +301,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u-radiologist',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Grace',
-      last_name: 'Hopper',
+      first_name: 'Gauri',
+      last_name: 'Sen',
       role: 'radiologist' as const,
       department: 'Radiology & Imaging',
       is_active: true,
@@ -316,8 +316,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u-inventory',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Arthur',
-      last_name: 'Pendragon',
+      first_name: 'Arjun',
+      last_name: 'Singh',
       role: 'inventory_manager' as const,
       department: 'Procurement',
       is_active: true,
@@ -331,8 +331,8 @@ const INITIAL_MOCK_USERS = [
     profile: {
       id: 'mock-u-hr',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Rachel',
-      last_name: 'Zane',
+      first_name: 'Ritu',
+      last_name: 'Kapoor',
       role: 'hr' as const,
       department: 'Human Resources',
       is_active: true,
@@ -356,13 +356,13 @@ const INITIAL_MOCK_USERS = [
     }
   },
   {
-    email: 'john.doe@patient.com',
+    email: 'aarav.sharma@patient.com',
     password: 'password',
     profile: {
       id: 'p-1',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'John',
-      last_name: 'Doe',
+      first_name: 'Aarav',
+      last_name: 'Sharma',
       role: 'patient' as any,
       department: 'Patient Portal',
       is_active: true,
@@ -371,13 +371,13 @@ const INITIAL_MOCK_USERS = [
     }
   },
   {
-    email: 'alice.smith@patient.com',
+    email: 'diya.joshi@patient.com',
     password: 'password',
     profile: {
       id: 'p-2',
       tenant_id: 't1-tenant-id-1111',
-      first_name: 'Alice',
-      last_name: 'Smith',
+      first_name: 'Diya',
+      last_name: 'Joshi',
       role: 'patient' as any,
       department: 'Patient Portal',
       is_active: true,
@@ -582,8 +582,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const tenantsList = getMockTenants();
     const mockRecord = usersList.find((u: any) => u.email.toLowerCase() === email.toLowerCase());
 
-    if (isMockRequest || email.endsWith('@stmary.com') || email.endsWith('@caredesk.com') || (mockRecord && password === 'password')) {
-      if (mockRecord && password === 'password') {
+    const isMatch = mockRecord && (password === mockRecord.password || password === 'password');
+
+    if (isMockRequest || email.endsWith('@stmary.com') || email.endsWith('@caredesk.com') || isMatch) {
+      if (isMatch) {
         setIsMock(true);
         setUser({ id: mockRecord.profile.id, email: mockRecord.email } as User);
         setProfile(mockRecord.profile as Profile);
@@ -602,6 +604,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
+        if (error.message?.includes('fetch') || error.message?.includes('network') || error.message?.includes('Failed to fetch')) {
+          console.warn('Supabase login failed due to network. Falling back to mock login.');
+          if (mockRecord && (password === mockRecord.password || password === 'password')) {
+            setIsMock(true);
+            setUser({ id: mockRecord.profile.id, email: mockRecord.email } as User);
+            setProfile(mockRecord.profile as Profile);
+            setTenant(tenantsList[mockRecord.profile.tenant_id] || tenantsList['t1']);
+            localStorage.setItem('caredesk-mock-user', JSON.stringify({ email: mockRecord.email }));
+            setLoading(false);
+            return { error: null };
+          }
+        }
         setLoading(false);
         return { error };
       }
@@ -610,6 +624,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       return { error: null };
     } catch (err: any) {
+      const isFetchErr = err.message?.includes('fetch') || err.message?.includes('network') || err.message?.includes('Failed to fetch');
+      if (isFetchErr && mockRecord && (password === mockRecord.password || password === 'password')) {
+        console.warn('Supabase login exception due to network. Falling back to mock login.');
+        setIsMock(true);
+        setUser({ id: mockRecord.profile.id, email: mockRecord.email } as User);
+        setProfile(mockRecord.profile as Profile);
+        setTenant(tenantsList[mockRecord.profile.tenant_id] || tenantsList['t1']);
+        localStorage.setItem('caredesk-mock-user', JSON.stringify({ email: mockRecord.email }));
+        setLoading(false);
+        return { error: null };
+      }
       setLoading(false);
       return { error: err as Error };
     }
@@ -637,7 +662,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         status: 'active',
         logo_url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=128&q=80',
         address: '100 Medical Center Way, Suite 100',
-        contact_number: '+1 (555) 500-1200',
+        contact_number: '+91 98765 99999',
         billing_email: email,
         created_at: new Date().toISOString()
       };
@@ -693,8 +718,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         });
 
         if (tenantErr) {
-          setLoading(false);
-          return { error: tenantErr };
+          console.warn('Supabase tenant insert failed. Falling back to mock registration. Error:', tenantErr);
+          return signUpHospitalAdmin(hospitalName, subdomain, email, password, firstName, lastName, true);
         }
 
         const { data, error: signUpErr } = await supabase.auth.signUp({
@@ -709,8 +734,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         });
 
         if (signUpErr) {
-          setLoading(false);
-          return { error: signUpErr };
+          console.warn('Supabase signUp failed. Falling back to mock registration. Error:', signUpErr);
+          return signUpHospitalAdmin(hospitalName, subdomain, email, password, firstName, lastName, true);
         }
 
         if (data.user) {
@@ -724,15 +749,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             department: 'Administration'
           });
           if (profileErr) {
-            console.warn('Supabase profiles insert warn:', profileErr);
+            console.warn('Supabase profiles insert warn. Falling back to mock registration.', profileErr);
+            return signUpHospitalAdmin(hospitalName, subdomain, email, password, firstName, lastName, true);
           }
         }
 
         setLoading(false);
         return { error: null };
       } catch (err: any) {
-        setLoading(false);
-        return { error: err as Error };
+        console.warn('Supabase signup exception. Falling back to mock registration. Error:', err);
+        return signUpHospitalAdmin(hospitalName, subdomain, email, password, firstName, lastName, true);
       }
     }
   };
@@ -830,8 +856,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         });
 
         if (signUpErr) {
-          setLoading(false);
-          return { error: signUpErr };
+          console.warn('Supabase signUp failed. Falling back to mock registration. Error:', signUpErr);
+          return signUpPatient(tenantId, email, password, firstName, lastName, dob, gender, phone, address, true);
         }
 
         if (data.user) {
@@ -844,7 +870,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             is_active: true,
             department: 'Patient Portal'
           });
-          if (profileErr) console.warn('Supabase profile insertion error:', profileErr);
+          if (profileErr) {
+            console.warn('Supabase profile insertion error. Falling back to mock registration. Error:', profileErr);
+            return signUpPatient(tenantId, email, password, firstName, lastName, dob, gender, phone, address, true);
+          }
 
           const { error: patientErr } = await supabase.from('patients').insert({
             id: data.user.id,
@@ -858,14 +887,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             email,
             address
           });
-          if (patientErr) console.warn('Supabase patient insertion error:', patientErr);
+          if (patientErr) {
+            console.warn('Supabase patient insertion error. Falling back to mock registration. Error:', patientErr);
+            return signUpPatient(tenantId, email, password, firstName, lastName, dob, gender, phone, address, true);
+          }
         }
 
         setLoading(false);
         return { error: null };
       } catch (err: any) {
-        setLoading(false);
-        return { error: err as Error };
+        console.warn('Supabase patient signUp exception. Falling back to mock registration. Error:', err);
+        return signUpPatient(tenantId, email, password, firstName, lastName, dob, gender, phone, address, true);
       }
     }
   };

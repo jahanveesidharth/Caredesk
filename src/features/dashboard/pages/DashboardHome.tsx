@@ -117,7 +117,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
 
   // 2. Booking Appointment
   const [appPatientId, setAppPatientId] = useState('');
-  const [appDoctor, setAppDoctor] = useState('Dr. Alexander House');
+  const [appDoctor, setAppDoctor] = useState('');
   const [appDate, setAppDate] = useState(new Date().toISOString().split('T')[0]);
   const [appTime, setAppTime] = useState('09:00 AM');
 
@@ -225,6 +225,10 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
     e.preventDefault();
     if (!appPatientId) {
       toast('Please select a registered patient', 'warning');
+      return;
+    }
+    if (!appDoctor) {
+      toast('Please select an assigned doctor', 'warning');
       return;
     }
     const app = bookAppointment(appPatientId, appDoctor, appDate, appTime);
@@ -598,7 +602,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
                             <div className="flex flex-col">
                               <span className="text-lg font-black">{occupied ? 'Occupied' : 'Vacant'}</span>
                               <span className="text-[10px] text-text-muted mt-1">
-                                {occupied ? (idx === 0 ? 'John Doe' : idx === 1 ? 'Alice Smith' : 'Robert Johnson') : 'Ready for admissions'}
+                                {occupied ? (idx === 0 ? 'Aarav Sharma' : idx === 1 ? 'Diya Joshi' : 'Rahul Verma') : 'Ready for admissions'}
                               </span>
                             </div>
                           </div>
@@ -739,8 +743,10 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
                           value={appDoctor}
                           onChange={e => setAppDoctor(e.target.value)}
                         >
-                          <option value="Dr. Alexander House">Dr. Alexander House (Cardiology)</option>
-                          <option value="Dr. Apex Dentist">Dr. Apex Dentist (Dental)</option>
+                          <option value="">-- Choose Doctor --</option>
+                          {filteredEmployees.filter(emp => emp.role === 'doctor').map(doc => (
+                            <option key={doc.id} value={doc.name}>{doc.name} ({doc.department})</option>
+                          ))}
                         </select>
                       </div>
 
@@ -1216,6 +1222,10 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
                 <CardContent>
                   <form onSubmit={(e) => {
                     e.preventDefault();
+                    if (!appDoctor) {
+                      toast('Please select a doctor to request appointment', 'warning');
+                      return;
+                    }
                     bookAppointment(profile.id, appDoctor, appDate, appTime);
                     toast('Appointment requested successfully!', 'success');
                   }} className="space-y-4">
@@ -1226,8 +1236,10 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
                         value={appDoctor}
                         onChange={e => setAppDoctor(e.target.value)}
                       >
-                        <option value="Dr. Alexander House">Dr. Alexander House (Cardiology)</option>
-                        <option value="Dr. Apex Dentist">Dr. Apex Dentist (Dental)</option>
+                        <option value="">-- Select Doctor --</option>
+                        {filteredEmployees.filter(emp => emp.role === 'doctor').map(doc => (
+                          <option key={doc.id} value={doc.name}>{doc.name} ({doc.department})</option>
+                        ))}
                       </select>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
@@ -1502,7 +1514,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
                 <div>[SYSTEM CHECK] 10:44:00 AM OK: postgres_pool running with 34 active connections.</div>
                 <div className="text-indigo-400">[JWT JWT_DECODE] 10:44:01 AM: Extracted role="doctor", tenant="t1-tenant-id-1111" from claims.</div>
                 <div className="text-teal-400">[RLS KERNEL] 10:44:02 AM: Query SELECT profiles filtered. 0 leaks blocked.</div>
-                <div className="text-rose-400">[COMPLIANCE] 10:44:03 AM Audit Log recorded: action="select_records", user="Dr. Alexander House".</div>
+                <div className="text-rose-400">[COMPLIANCE] 10:44:03 AM Audit Log recorded: action="select_records", user="Dr. Aarav Mehta".</div>
                 <div className="text-indigo-400">[JWT JWT_DECODE] 10:44:05 AM: Extracted role="patient", tenant="t1-tenant-id-1111".</div>
                 <div className="text-teal-400">[RLS KERNEL] 10:44:06 AM: Query SELECT EMR encounters filtered. Only records matching patient="p-1" returned.</div>
               </div>
@@ -1712,7 +1724,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
                         {filteredEncounters.filter(e => e.patient_id === selectedPatientId).map(e => (
                           <div key={e.id} className="p-3 border border-border-main rounded-lg text-xs space-y-2">
                             <div className="flex justify-between font-semibold">
-                              <span>Dr. House | {e.date}</span>
+                              <span>Dr. Mehta | {e.date}</span>
                               <Badge variant="success">Completed</Badge>
                             </div>
                             <p><strong>Chief Complaint:</strong> "{e.chief_complaint}"</p>
@@ -1904,19 +1916,19 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
                   <TableBody>
                     <TableRow>
                       <TableCell className="font-bold text-text-heading">Ward A - Bed A-101</TableCell>
-                      <TableCell>John Doe</TableCell>
+                      <TableCell>Aarav Sharma</TableCell>
                       <TableCell>45</TableCell>
                       <TableCell><Badge variant="danger">Occupied</Badge></TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-bold text-text-heading">Ward A - Bed A-102</TableCell>
-                      <TableCell>Alice Smith</TableCell>
+                      <TableCell>Diya Joshi</TableCell>
                       <TableCell>28</TableCell>
                       <TableCell><Badge variant="danger">Occupied</Badge></TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-bold text-text-heading">Ward B - Bed B-201</TableCell>
-                      <TableCell>Robert Johnson</TableCell>
+                      <TableCell>Rahul Verma</TableCell>
                       <TableCell>62</TableCell>
                       <TableCell><Badge variant="danger">Occupied</Badge></TableCell>
                     </TableRow>
@@ -2190,7 +2202,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
       {/* 1. Patient Registration Modal */}
       <Dialog isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)} title="Register New Patient Profile">
         <form onSubmit={handleRegister} className="space-y-4">
-          <Input label="Full Name" placeholder="John Doe" value={name} onChange={e => setName(e.target.value)} />
+          <Input label="Full Name" placeholder="Aarav Sharma" value={name} onChange={e => setName(e.target.value)} />
           
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col space-y-1">
@@ -2209,7 +2221,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <Input label="Mobile Phone" placeholder="+1..." value={phone} onChange={e => setPhone(e.target.value)} />
+            <Input label="Mobile Phone" placeholder="+91..." value={phone} onChange={e => setPhone(e.target.value)} />
             <Input label="Email Address" placeholder="name@email.com" value={email} onChange={e => setEmail(e.target.value)} />
           </div>
 
