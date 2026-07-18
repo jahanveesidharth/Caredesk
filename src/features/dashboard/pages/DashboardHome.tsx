@@ -36,6 +36,7 @@ import {
   Building,
   UserCheck,
   AlertTriangle,
+  AlertCircle,
   Search
 } from 'lucide-react';
 
@@ -433,6 +434,173 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({ activeTab }) => {
             </div>
           </div>
         );
+
+      case 'hospital_admin': {
+        const paidRevenue = filteredInvoices.filter(i => i.status === 'paid').reduce((acc, c) => acc + c.amount, 0);
+        const unpaidAR = filteredInvoices.filter(i => i.status === 'unpaid').reduce((acc, c) => acc + c.amount, 0);
+        const lowStockCount = filteredInventory.filter(item => item.stock <= item.reorder_level).length;
+
+        return (
+          <div className="space-y-6">
+            {/* Top Stat Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card hoverable className="border-indigo-500/10">
+                <CardContent className="pt-5">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-xs font-semibold text-text-muted uppercase">Hospital Revenue (Paid)</p>
+                      <h3 className="text-2xl font-black text-emerald-600 mt-1">{formatINR(paidRevenue)}</h3>
+                    </div>
+                    <DollarSign className="text-emerald-500" size={28} />
+                  </div>
+                  <p className="text-[10px] text-text-muted mt-2">Cashflow collected directly in mock vault</p>
+                </CardContent>
+              </Card>
+
+              <Card hoverable className="border-indigo-500/10">
+                <CardContent className="pt-5">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-xs font-semibold text-text-muted uppercase">Accounts Receivable (AR)</p>
+                      <h3 className="text-2xl font-black text-rose-500 mt-1">{formatINR(unpaidAR)}</h3>
+                    </div>
+                    <AlertCircle className="text-rose-500" size={28} />
+                  </div>
+                  <p className="text-[10px] text-text-muted mt-2">Outstanding client balances pending payment</p>
+                </CardContent>
+              </Card>
+
+              <Card hoverable className="border-indigo-500/10">
+                <CardContent className="pt-5">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-xs font-semibold text-text-muted uppercase">Total Registered Patients</p>
+                      <h3 className="text-2xl font-black text-text-heading mt-1">{filteredPatients.length} Patients</h3>
+                    </div>
+                    <Users className="text-indigo-500" size={28} />
+                  </div>
+                  <p className="text-[10px] text-text-muted mt-2">Registered client directory files active</p>
+                </CardContent>
+              </Card>
+
+              <Card hoverable className="border-indigo-500/10">
+                <CardContent className="pt-5">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-xs font-semibold text-text-muted uppercase">Roster Staff size</p>
+                      <h3 className="text-2xl font-black text-text-heading mt-1">{filteredEmployees.length} Clinicians</h3>
+                    </div>
+                    <Activity className="text-blue-500" size={28} />
+                  </div>
+                  <p className="text-[10px] text-text-muted mt-2">Active personnel assignments today</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Middle Section: Recent Bookings Ledger & Low Stock Warning */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Daily appointments slot ledger */}
+              <div className="lg:col-span-2 space-y-6">
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between">
+                    <div>
+                      <CardTitle>Daily Outpatient Appointments</CardTitle>
+                      <CardDescription>Hospital-wide clinical appointment listings</CardDescription>
+                    </div>
+                    <Badge variant="primary">{filteredAppointments.length} Booked</Badge>
+                  </CardHeader>
+                  <CardContent>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Token</TableHead>
+                          <TableHead>Patient Name</TableHead>
+                          <TableHead>Date / Time</TableHead>
+                          <TableHead>Doctor</TableHead>
+                          <TableHead>Status</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {filteredAppointments.length === 0 ? (
+                          <TableRow>
+                            <TableCell colSpan={5} className="text-center text-text-muted py-6">No appointments booked today.</TableCell>
+                          </TableRow>
+                        ) : (
+                          filteredAppointments.slice(0, 5).map(a => (
+                            <TableRow key={a.id}>
+                              <TableCell className="font-mono text-xs font-bold text-brand-primary">{a.token}</TableCell>
+                              <TableCell className="font-bold text-text-heading">{a.patient_name}</TableCell>
+                              <TableCell>{a.date} | {a.time}</TableCell>
+                              <TableCell>{a.doctor_name}</TableCell>
+                              <TableCell>
+                                <Badge variant={a.status === 'arrived' ? 'warning' : a.status === 'completed' ? 'success' : 'primary'}>
+                                  {a.status}
+                                </Badge>
+                              </TableCell>
+                            </TableRow>
+                          ))
+                        )}
+                      </TableBody>
+                    </Table>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Low stock alerts & critical parameters */}
+              <div className="space-y-6">
+                <Card className="border-amber-500/20 bg-amber-500/5">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-amber-800 dark:text-amber-300 flex items-center gap-2 text-sm font-bold">
+                      <AlertTriangle size={16} /> Critical Stock Alerts
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {lowStockCount === 0 ? (
+                      <p className="text-xs text-amber-700 dark:text-amber-400">All medicine inventory levels healthy.</p>
+                    ) : (
+                      <div className="space-y-3">
+                        {filteredInventory.filter(item => item.stock <= item.reorder_level).slice(0, 3).map(item => (
+                          <div key={item.id} className="flex justify-between items-center bg-bg-surface p-2.5 border border-amber-500/10 rounded-lg text-xs">
+                            <div>
+                              <p className="font-bold text-text-heading">{item.name}</p>
+                              <p className="text-text-muted text-[10px]">Current Stock: {item.stock} units</p>
+                            </div>
+                            <Badge variant="danger">Low Stock</Badge>
+                          </div>
+                        ))}
+                        <p className="text-[10px] text-text-muted mt-2">There are {lowStockCount} items below safe stock reorder threshold.</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+
+                {/* Platform Compliance status */}
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-bold flex items-center gap-2">
+                      <Shield size={16} className="text-indigo-500" /> Compliance Status
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3 text-xs">
+                    <div className="flex justify-between">
+                      <span>Data Isolation (Multi-tenant):</span>
+                      <span className="text-emerald-600 font-bold">Enforced</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>HIPAA Privacy Logs:</span>
+                      <span className="text-emerald-600 font-bold">Active</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Workspace status:</span>
+                      <span className="text-indigo-600 font-bold">Demo Sandbox</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        );
+      }
 
       case 'doctor':
         // Doctor queue and diagnostic approvals

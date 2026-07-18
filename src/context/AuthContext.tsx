@@ -577,14 +577,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string, isMockRequest: boolean = false) => {
     setLoading(true);
     
-    // Process mock login
+    const isMockAuth = isMockRequest || !import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_URL.includes('placeholder');
+
     const usersList = getMockUsers();
     const tenantsList = getMockTenants();
     const mockRecord = usersList.find((u: any) => u.email.toLowerCase() === email.toLowerCase());
 
     const isMatch = mockRecord && (password === mockRecord.password || password === 'password');
 
-    if (isMockRequest || email.endsWith('@stmary.com') || email.endsWith('@caredesk.com') || isMatch) {
+    if (isMockAuth) {
+      if (!mockRecord) {
+        setLoading(false);
+        return { error: new Error('User account not found in local browser sandbox. Please sign up first.') };
+      }
+      if (!isMatch) {
+        setLoading(false);
+        return { error: new Error('Incorrect password. Please try again.') };
+      }
+      setIsMock(true);
+      setUser({ id: mockRecord.profile.id, email: mockRecord.email } as User);
+      setProfile(mockRecord.profile as Profile);
+      setTenant(tenantsList[mockRecord.profile.tenant_id] || tenantsList['t1']);
+      localStorage.setItem('caredesk-mock-user', JSON.stringify({ email: mockRecord.email }));
+      setLoading(false);
+      return { error: null };
+    }
+
+    if (email.endsWith('@stmary.com') || email.endsWith('@caredesk.com') || isMatch) {
       if (isMatch) {
         setIsMock(true);
         setUser({ id: mockRecord.profile.id, email: mockRecord.email } as User);
@@ -593,10 +612,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.setItem('caredesk-mock-user', JSON.stringify({ email: mockRecord.email }));
         setLoading(false);
         return { error: null };
-      }
-      if (isMockRequest) {
-        setLoading(false);
-        return { error: new Error('Invalid mock credentials. Hint: password is "password"') };
       }
     }
 
