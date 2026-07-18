@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Outfit", "Inter", system-ui, -apple-system, sans-serif;
+  
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-teal-hover: var(--brand-teal-hover);
+  
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-surface-hover: var(--bg-surface-hover);
+  
+  --color-border-main: var(--border-main);
+  
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-heading: var(--text-heading);
+}
+
+:root {
+  --brand-primary: #4f46e5; /* Indigo-600 */
+  --brand-primary-hover: #4338ca; /* Indigo-700 */
+  --brand-teal: #0d9488; /* Teal-600 */
+  --brand-teal-hover: #0f766e; /* Teal-700 */
+  
+  --bg-base: #f8fafc; /* Slate-50 */
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9; /* Slate-100 */
+  
+  --border-main: #e2e8f0; /* Slate-200 */
+  
+  --text-main: #334155; /* Slate-700 */
+  --text-muted: #64748b; /* Slate-500 */
+  --text-heading: #0f172a; /* Slate-900 */
+}
+
+.dark {
+  --brand-primary: #6366f1; /* Indigo-500 */
+  --brand-primary-hover: #4f46e5; /* Indigo-600 */
+  --brand-teal: #14b8a6; /* Teal-500 */
+  --brand-teal-hover: #0d9488; /* Teal-600 */
+  
+  --bg-base: #0b0f19; /* Deep dark blue-slate */
+  --bg-surface: #111827; /* Gray-900 */
+  --bg-surface-hover: #1f2937; /* Gray-800 */
+  
+  --border-main: #1f2937; /* Gray-800 */
+  
+  --text-main: #9ca3af; /* Gray-400 */
+  --text-muted: #6b7280; /* Gray-500 */
+  --text-heading: #f9fafb; /* Gray-50 */
+}
+
+/* Base custom resets */
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-heading);
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-panel {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-main);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

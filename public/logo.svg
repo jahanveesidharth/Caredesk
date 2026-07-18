@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150" width="100%" height="100%">
+  <defs>
+    <!-- Smooth gradient for the primary 'C' shape -->
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop class="primary-stop-1" offset="0%" stop-color="#1E3A8A" />
+      <stop class="primary-stop-2" offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <!-- Smooth gradient for the tech 'D' shape -->
+    <linearGradient id="secondaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop class="secondary-stop-1" offset="0%" stop-color="#0D9488" />
+      <stop class="secondary-stop-2" offset="100%" stop-color="#115E59" />
+    </linearGradient>
+
+    <style>
+      .brand-name { fill: #0F172A; }
+      .brand-subtitle { fill: #64748B; }
+      .ring-border { stroke: #E2E8F0; }
+      .primary-stop-1 { stop-color: #1E3A8A; }
+      .primary-stop-2 { stop-color: #0F172A; }
+      .secondary-stop-1 { stop-color: #0D9488; }
+      .secondary-stop-2 { stop-color: #115E59; }
+
+      @media (prefers-color-scheme: dark) {
+        .brand-name { fill: #F8FAFC; }
+        .brand-subtitle { fill: #94A3B8; }
+        .ring-border { stroke: #334155; }
+        .primary-stop-1 { stop-color: #3B82F6; }
+        .primary-stop-2 { stop-color: #1E3A8A; }
+        .secondary-stop-1 { stop-color: #2DD4BF; }
+        .secondary-stop-2 { stop-color: #0D9488; }
+      }
+    </style>
+  </defs>
+
+  <!-- ICON MARK (Interlocking C + D + Cross) -->
+  <g transform="translate(20, 15)">
+    <!-- Outer Shadow / Glow Ring for depth -->
+    <circle cx="60" cy="60" r="58" fill="none" class="ring-border" stroke-width="2" opacity="0.5"/>
+    
+    <!-- The 'C' Element (Left Side) -->
+    <path d="M 60 20 
+             A 40 40 0 1 0 60 100 
+             L 60 84 
+             A 24 24 0 1 1 60 36 
+             Z" 
+          fill="url(#primaryGrad)" />
+
+    <!-- The 'D' Element (Right Side) -->
+    <path d="M 60 20 
+             A 40 40 0 0 1 100 60 
+             A 40 40 0 0 1 60 100 
+             L 60 84 
+             A 24 24 0 0 0 84 60 
+             A 24 24 0 0 0 60 36 
+             Z" 
+          fill="url(#secondaryGrad)" opacity="0.9" />
+
+    <!-- Central Medical Cross Integration -->
+    <path d="M 54 45 h 12 v 9 h 9 v 12 h -9 v 9 h -12 v -9 h -9 v -12 h 9 z" 
+          fill="#FFFFFF" />
+  </g>
+
+  <!-- TYPOGRAPHY -->
+  <!-- Main Brand Name -->
+  <text x="160" y="75" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-weight="700" 
+        font-size="48px" 
+        class="brand-name"
+        letter-spacing="-0.5px">Care<tspan fill="#0D9488">Desk</tspan></text>
+
+  <!-- Subtitle / Architecture Descriptor -->
+  <text x="162" y="110" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-weight="500" 
+        font-size="16px" 
+        class="brand-subtitle"
+        letter-spacing="1px">HOSPITAL MANAGEMENT &amp; SaaS</text>
+</svg>

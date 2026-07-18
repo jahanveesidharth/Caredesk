@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop class="bg-stop-1" offset="0%" stop-color="#1E3A8A" />
+      <stop class="bg-stop-2" offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="dGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop class="d-stop-1" offset="0%" stop-color="#2DD4BF" />
+      <stop class="d-stop-2" offset="100%" stop-color="#0D9488" />
+    </linearGradient>
+
+    <style>
+      .border-circle { stroke: #38BDF8; opacity: 0.3; }
+      .bg-stop-1 { stop-color: #1E3A8A; }
+      .bg-stop-2 { stop-color: #0F172A; }
+      .d-stop-1 { stop-color: #2DD4BF; }
+      .d-stop-2 { stop-color: #0D9488; }
+      .cross-path { fill: #1E3A8A; }
+      .c-path { fill: #FFFFFF; }
+
+      @media (prefers-color-scheme: dark) {
+        .border-circle { stroke: #2DD4BF; opacity: 0.5; }
+        .bg-stop-1 { stop-color: #0F172A; }
+        .bg-stop-2 { stop-color: #020617; }
+        .d-stop-1 { stop-color: #34D399; }
+        .d-stop-2 { stop-color: #059669; }
+        .cross-path { fill: #0F172A; }
+      }
+    </style>
+  </defs>
+
+  <!-- Circular Container Base -->
+  <circle cx="256" cy="256" r="240" fill="url(#bgGrad)" />
+  <circle cx="256" cy="256" r="230" fill="none" class="border-circle" stroke-width="4" />
+
+  <!-- Icon Mark Scaled for Centered Focus -->
+  <g transform="translate(136, 136) scale(2)">
+    <!-- The 'C' Arc -->
+    <path d="M 60 20 
+             A 40 40 0 1 0 60 100 
+             L 60 84 
+             A 24 24 0 1 1 60 36 
+             Z" 
+          class="c-path" />
+
+    <!-- The 'D' Arc -->
+    <path d="M 60 20 
+             A 40 40 0 0 1 100 60 
+             A 40 40 0 0 1 60 100 
+             L 60 84 
+             A 24 24 0 0 0 84 60 
+             A 24 24 0 0 0 60 36 
+             Z" 
+          fill="url(#dGrad)" />
+
+    <!-- Inner Highlight Cross -->
+    <path d="M 54 45 h 12 v 9 h 9 v 12 h -9 v 9 h -12 v -9 h -9 v -12 h 9 z" 
+          class="cross-path" />
+  </g>
+</svg>
